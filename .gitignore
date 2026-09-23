@@ -1,0 +1,23 @@
+# Secrets — jamais versionnés
+secu/vault/vault-init-output.txt
+*.pem
+*.key
+minio-tenant-secrets.yaml
+.env
+
+# Données générées / locales
+data/raw/*.csv
+data/bronze/
+data/silver/
+data/gold/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Spark
+spark-warehouse/
+derby.log
+metastore_db/
