@@ -1,0 +1,27 @@
+apiVersion: minio.min.io/v2
+kind: Tenant
+metadata:
+  name: spark-demo-minio
+  namespace: spark-medallion-demo
+  labels:
+    app: minio
+spec:
+  image: cgr.dev/chainguard/minio:latest
+  configuration:
+    name: minio-creds
+  pools:
+    - name: pool-0
+      servers: 1
+      volumesPerServer: 1
+      volumeClaimTemplate:
+        metadata:
+          name: data
+        spec:
+          storageClassName: local-path
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 10Gi
+  requestAutoCert: false
+  mountPath: /export

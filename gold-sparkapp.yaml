@@ -1,0 +1,29 @@
+apiVersion: sparkoperator.k8s.io/v1beta2
+kind: SparkApplication
+metadata:
+  name: gold-aggregate
+  namespace: spark-medallion-demo
+spec:
+  type: Python
+  mode: cluster
+  image: spark-medallion-demo:v1
+  imagePullPolicy: IfNotPresent
+  mainApplicationFile: local:///opt/spark-jobs/gold_aggregate.py
+  sparkVersion: 3.4.0
+  restartPolicy:
+    type: Never
+  driver:
+    serviceAccount: spark-medallion-sa
+    cores: 1
+    coreRequest: "500m"
+    coreLimit: "500m"
+    memory: 512m
+    envVars:
+      MINIO_ACCESS_KEY: "spark-demo-admin"
+      MINIO_SECRET_KEY: "Cyw2AK5QQS4nC+oBmdeWnyTO8VN5LbvP"
+  executor:
+    cores: 1
+    coreRequest: "500m"
+    coreLimit: "500m"
+    instances: 1
+    memory: 512m

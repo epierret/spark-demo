@@ -2,6 +2,7 @@ server:
   standalone:
     enabled: true
     config: |
+      ui = true
       listener "tcp" {
         address     = "[::]:8200"
         tls_disable = 1
@@ -18,3 +19,6 @@ server:
 
 injector:
   enabled: true   
+ui:
+  enabled: true
+

@@ -21,3 +21,5 @@ venv/
 spark-warehouse/
 derby.log
 metastore_db/
+vault-init-output.txt
+data-generator/*.csv

@@ -15,7 +15,7 @@ def generate_customers(n=200):
     for i in range(n):
         rows.append({
             "customer_id": f"CUST-{i:04d}",
-            "email": f"customer{i}@example.com" if random.random() > 0.02 else "",  # 2% de nulls volontaires
+            "email": f"customer{i}@example.com" if random.random() > 0.02 else "",
             "country": random.choice(["FR", "DE", "ES", "IT", "BE"]),
             "signup_date": (datetime(2024, 1, 1) + timedelta(days=random.randint(0, 600))).strftime("%Y-%m-%d"),
         })
@@ -37,7 +37,7 @@ def generate_orders(customers, products, n=5000):
             "order_date": order_date.strftime("%Y-%m-%d"),
         }
         rows.append(row)
-        if random.random() < 0.01:  # 1% de doublons volontaires
+        if random.random() < 0.01:
             rows.append(row.copy())
     return rows
 
